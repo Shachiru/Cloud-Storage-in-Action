@@ -1,5 +1,7 @@
 package lk.ijse.eca.cloud_storage.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +50,9 @@ public class ImageController {
     public ResponseEntity<Resource> getImage(@PathVariable String filename) {
         try {
             Resource resource = storageService.load(filename);
+            String contentType = Files.probeContentType(resource.getFile().toPath());
             return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_PNG)
+                    .contentType(MediaType.parseMediaType(contentType != null ? contentType : "application/octet-stream"))
                     .body(resource);
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
