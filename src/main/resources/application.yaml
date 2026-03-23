@@ -7,6 +7,6 @@ spring:
       max-request-size: 10MB
 
 gcp:
-  project-id: its-2130-eca-hdse-69-70
-  credentials-location: /its-2130-eca-hdse-69-70-d668baa04d94.json
-  bucket-id: its-2130-eca-hdse-69-70-bucket-1
+  project-id: its-eca-project
+  credentials-location: its-eca-project-3d00b58eedb3.json
+  bucket-id: its-eca-bucket-01
